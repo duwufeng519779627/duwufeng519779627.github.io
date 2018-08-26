@@ -5,16 +5,19 @@
   
 
   
-  <title>my blog | Hexo</title>
+  <title>js里的&amp;&amp;|| | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="my blog">
+  <meta name="description" content="[转] JS运算符 &amp;amp;&amp;amp;和|| 及其优先级第一、&amp;amp;&amp;amp; (逻辑与)运算，看一个简单的例子： var a = 1 &amp;amp;&amp;amp; 2 &amp;amp;&amp;amp; 3;var b = 0 &amp;amp;&amp;amp; 1 &amp;amp;&amp;amp; 2;var c = 1 &amp;amp;&amp;amp; 0 &amp;amp;&amp;amp; 2;console.log(a);//值为3console.log">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js里的&amp;&amp;||">
 <meta property="og:url" content="http://yoursite.com/2018/08/26/js里的与和或/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="[转] JS运算符 &amp;amp;&amp;amp;和|| 及其优先级第一、&amp;amp;&amp;amp; (逻辑与)运算，看一个简单的例子： var a = 1 &amp;amp;&amp;amp; 2 &amp;amp;&amp;amp; 3;var b = 0 &amp;amp;&amp;amp; 1 &amp;amp;&amp;amp; 2;var c = 1 &amp;amp;&amp;amp; 0 &amp;amp;&amp;amp; 2;console.log(a);//值为3console.log">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-08-26T12:05:07.841Z">
+<meta property="og:updated_time" content="2018-08-26T12:09:28.110Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="my blog">
+<meta name="twitter:title" content="js里的&amp;&amp;||">
+<meta name="twitter:description" content="[转] JS运算符 &amp;amp;&amp;amp;和|| 及其优先级第一、&amp;amp;&amp;amp; (逻辑与)运算，看一个简单的例子： var a = 1 &amp;amp;&amp;amp; 2 &amp;amp;&amp;amp; 3;var b = 0 &amp;amp;&amp;amp; 1 &amp;amp;&amp;amp; 2;var c = 1 &amp;amp;&amp;amp; 0 &amp;amp;&amp;amp; 2;console.log(a);//值为3console.log">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -75,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      my blog
+      js里的&amp;&amp;||
     </h1>
   
 
@@ -83,11 +86,36 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="转-JS运算符-amp-amp-和-及其优先级"><a href="#转-JS运算符-amp-amp-和-及其优先级" class="headerlink" title="[转] JS运算符 &amp;&amp;和|| 及其优先级"></a><a href="https://www.cnblogs.com/gyfluck/p/6015053.html" target="_blank" rel="noopener">[转] JS运算符 &amp;&amp;和|| 及其优先级</a></h1><p><strong>第一、&amp;&amp; (逻辑与)运算，看一个简单的例子：</strong></p>
+<p>var a = 1 &amp;&amp; 2 &amp;&amp; 3;<br>var b = 0 &amp;&amp; 1 &amp;&amp; 2;<br>var c = 1 &amp;&amp; 0 &amp;&amp; 2;<br>console.log(a);//值为3<br>console.log(b);//值为0<br>console.log(c);//值为0</p>
+<p>运行的结果是 ：3，0，0。</p>
+<p>解析：</p>
+<p>“&amp;&amp;” 运算遇到false就返回；</p>
+<p>变量a的计算：因为1 &amp;&amp; 2，1为真，返回2；2&amp;&amp;3， 2为真，返回3 。</p>
+<p>变量b的计算：因为0 &amp;&amp; 1，0为假，返回0，不再往下计算。</p>
+<p><strong>第二、|| (逻辑或)运算，看一个简单的例子：</strong></p>
+<p>var d = 0 || 1 || 2;<br>var e = 1 || 0 || 2;<br>var f = 1 || 2 || 0;</p>
+<p>console.log(d);//值为1<br>console.log(e);//值为1<br>console.log(f);//值为1</p>
+<p> 解析：</p>
+<p>“||”运算遇到true就返回；</p>
+<p>变量d的计算：因为0 || 1，0为假，返回1；1 || 2， 1为真，返回1 。</p>
+<p>变量e的计算：因为1 || 0，1为真，返回1，不再往下计算。</p>
+<p><strong>三、&amp;&amp; (逻辑与) 和||（逻辑或）混合使用：</strong></p>
+<p><em>var g =  1 &amp;&amp; 2 || 3;</em></p>
+<p><em>var h = 1 || 2 &amp;&amp; 3;</em></p>
+<p><em>var i = 0 || 2 &amp;&amp; 3;</em></p>
+<p><em>console.log(g);//值为2console.log(h);//值为1</em> </p>
+<p><em>console.log(h);//值为3</em></p>
+<p> 解析：</p>
+<p>&amp;&amp; (逻辑与) 优先级高于||（逻辑或）；</p>
+<p>变量g的计算：因为1 &amp;&amp; 2，1为真，返回2；2 || 3， 2为真，返回2 。</p>
+<p>变量e的计算：等式看成 1 || （一个值），1为真，最终直接返回1，不需要计算后边的等式的值。</p>
+<p>变量i的计算：因为2 &amp;&amp; 3，2为真，返回3；0 || 3，0为假，返回3。</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/08/26/js里的与和或/" data-id="cjlatbrus0000d8uktlfkcyp6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/08/26/js里的与和或/" data-id="cjlateyql0001xgukq24nzwlw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -97,9 +125,9 @@
 <nav id="article-nav">
   
   
-    <a href="/2018/08/26/my-blog/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/08/17/安装hexo/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">js里的&amp;&amp;||</div>
+      <div class="article-nav-title">Hexo 使用 Markdown 编辑技巧大全</div>
     </a>
   
 </nav>
@@ -136,11 +164,7 @@
       <ul>
         
           <li>
-            <a href="/2018/08/26/js里的与和或/">my blog</a>
-          </li>
-        
-          <li>
-            <a href="/2018/08/26/my-blog/">js里的&amp;&amp;||</a>
+            <a href="/2018/08/26/js里的与和或/">js里的&amp;&amp;||</a>
           </li>
         
           <li>
